@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cinema</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-100 min-h-screen font-sans">
+
+    <header class="bg-gray-800 border-b border-red-600 p-6 shadow-xl">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <h1 class="text-3xl font-extrabold text-white tracking-tighter">
+                🎬 <span class="text-red-500">MY</span> CINEMA
+            </h1>
+            <nav class="flex gap-2">
+                <button onclick="fetchData('list_movie')"
+                    class="px-4 py-2 bg-gray-700 hover:bg-red-600 transition rounded-md font-semibold">Films</button>
+                <button onclick="fetchData('list_room')"
+                    class="px-4 py-2 bg-gray-700 hover:bg-red-600 transition rounded-md font-semibold">Salles</button>
+                <button onclick="fetchData('list_screening')"
+                    class="px-4 py-2 bg-gray-700 hover:bg-red-600 transition rounded-md font-semibold">Séances</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Ajouter un film -->
+        <div class="flex flex-col gap-4">
+            <section id="form-sectionMovie" class="bg-gray-800 p-6 rounded-lg shadow-lg h-fit border border-gray-700">
+                <h2 class="text-xl font-bold mb-4 text-red-500 border-b border-gray-700 pb-2">Ajouter un Film</h2>
+                <form id="add-movie-form" class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Titre</label>
+                        <input type="text" name="title" placeholder="FAST AND FURIOUS"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Description</label>
+                        <input type="text" name="description" placeholder="Course de voitures"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Durée</label>
+                        <input type="number" name="duration" placeholder="Durée (min)"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Année de sortie</label>
+                        <input type="number" name="release_year" placeholder="Sortie 2001"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Genre</label>
+                        <input type="text" name="genre" placeholder="Action"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <input type="hidden" id="movie-id" name="id">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Réalisateur</label>
+                        <input type="text" name="director" placeholder="Vin Diesel"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded transition mt-2">
+                        Ajouter au catalogue
+                    </button>
+                    
+                </form>
+            </section>
+            <!-- Ajouter une salle -->
+            <section id="form-sectionRoom" class="bg-gray-800 p-6 rounded-lg shadow-lg h-fit border border-gray-700">
+                <h2 class="text-xl font-bold mb-4 text-red-500 border-b border-gray-700 pb-2">Ajouter une Salle</h2>
+                <form id="add-room-form" class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Nom de la salle</label>
+                        <input type="text" name="name" placeholder="Salle VIP"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <input type="hidden" id="room-id" name="id">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Capacité</label>
+                        <input type="number" name="capacity" placeholder="150 places"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <div>
+                        <select name="active"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                        </select>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded transition mt-2">
+                        Ajouter au catalogue
+                    </button>
+                </form>
+            </section>
+            <!-- Ajouter une séance -->
+            <section id="form-sectionScreening"
+                class="bg-gray-800 p-6 rounded-lg shadow-lg h-fit border border-gray-700">
+                <h2 class="text-xl font-bold mb-4 text-red-500 border-b border-gray-700 pb-2">Ajouter une séance</h2>
+                <form id="add-screening-form" class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Film</label>
+                        <input type="number" name="movie_id" placeholder="ID du Film"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <input type="hidden" id="screening-id" name="id">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Salle</label>
+                        <input type="number" name="room_id" placeholder="ID de la Salle"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Heure de début</label>
+                        <input type="datetime-local" id="start_time" name="start_time"
+                            class="w-full bg-gray-900 border border-gray-700 rounded p-2 focus:outline-none focus:border-red-500 transition">
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded transition mt-2">
+                        Ajouter au catalogue
+                    </button>
+                </form>
+            </section>
+        </div>
+              <!-- Visualisation des évenements -->
+        <section id="display-section" class="lg:col-span-2 bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+            <h2 class="text-xl font-bold mb-4 text-red-500 border-b border-gray-700 pb-2">Données en temps réel</h2>
+            <div id="api-result"
+                class="bg-black rounded p-4 font-mono text-sm overflow-x-auto min-h-[500px] justify-center">
+                <p class="text-gray-500 italic text-center mt-20">En attente d'une action...</p>
+            </div>
+            
+        </section>
+
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

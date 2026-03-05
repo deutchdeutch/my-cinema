@@ -249,5 +249,8 @@ Projet réalisé dans un but **pédagogique** pour comprendre :
 * Tests unitaires
 
 ---
+## 🚀 Liens utiles
+* **Démo Statique :** [Lien GitHub Pages](https://deutchdeutch.github.io/my-cinema/)
+* **API Documentation :** [Postman Collection](./backend/docs/My_Collection.json)
 
 🎉 **My_Cinema est prêt à être utilisé et amélioré !**

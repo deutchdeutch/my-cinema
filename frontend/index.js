@@ -2,7 +2,7 @@ let moviePage = 1;
 const moviesPage = 5;
 let roomPage = 1;
 const roomsPage = 5;
-const API_URL = 'http://localhost:8000/index.php';
+const API_URL = 'https://mon-api-cinema.up.railway.app';
 
 // --- FONCTION DE LISTAGE ---
 function fetchData(action, page = 1) {

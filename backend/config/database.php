@@ -1,6 +1,6 @@
 <?php
 // On utilise dirname(__FILE__) pour être sûr de rester dans le dossier actuel
-$config = require __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
+$config = require __DIR__ . '/config.php';
 
 try {
     // Ajout de 'port' pour être sûr que Railway se connecte au bon endroit

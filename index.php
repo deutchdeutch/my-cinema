@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require_once __DIR__ . "/backend/config/database.php"; // inclusion  de la base de données
+require_once __DIR__ . "/config/database.php"; // inclusion  de la base de données
 // inclusion des différents fichiers
 // require_once "models/Movie.php";
 // require_once "repositories/MovieRepository.php" ;

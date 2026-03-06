@@ -1,7 +1,6 @@
 <?php
 return [
     'db_host' => 'localhost',
-    'db_port' => '8080',
     'db_name' => 'nom_de_la_base',
     'db_user' => 'votre_utilisateur',
     'db_pass' => 'votre_mot_de_passe',
